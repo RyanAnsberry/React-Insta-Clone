@@ -1,11 +1,14 @@
 import React from 'react';
 import './PostContainer.css';
-import CommentSection from '../CommentSection/CommentSection'
+import Post from './Post';
 
 function PostContainer (props) {
+    console.log(props);
     return(
         <div className="post-container">
-            <CommentSection comments={props.data.comments}/>
+            {props.posts.map(p => {
+                return <Post key={p.imageUrl} comments={p.comments} post={p} thumbnailUrl={p.thumbnailUrl}/>
+            })}
         </div>
     );
 }
