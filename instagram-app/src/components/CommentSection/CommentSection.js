@@ -1,19 +1,31 @@
 import React from 'react';
-import './CommentSection.css';
+import PropTypes from 'prop-types';
+import Comment from './Comment';
 
-function CommentSection (props) {
-    return(
-        <div className="comment-section">
-            {props.comments.map( comment => {
-                return (
-                    <div className="comment" key={comment.id}>
-                        <h5 className="comment-username">{comment.username}</h5>
-                        <p className="comment=text">{comment.text}</p>
-                    </div>
-                );
-            })}
-        </div>
+
+class CommentSection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      comments: props.comments
+    };
+  }
+  render() {
+    return (
+      <div>
+        {this.state.comments.map( (comment) => <Comment key={comment.id} comment={comment} />)}
+      </div>
     );
+  }
 }
+
+CommentSection.propTypes = {
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({ 
+        text: PropTypes.string, 
+        username: PropTypes.string 
+    })
+  )
+};
 
 export default CommentSection;
