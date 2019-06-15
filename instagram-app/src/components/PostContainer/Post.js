@@ -4,6 +4,7 @@ import CommentSection from '../CommentSection/CommentSection';
 import './Post.css';
 
 const Post = props => {
+  console.log(props);
   return (
     <div className="post-border">
       <div className="post-header">
@@ -22,6 +23,7 @@ const Post = props => {
           className="post-image"
           src={props.post.imageUrl}
         />
+        {props.timestamp}
       </div>
       <CommentSection comments={props.post.comments} />
     </div>
