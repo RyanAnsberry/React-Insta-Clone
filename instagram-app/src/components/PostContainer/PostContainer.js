@@ -3,7 +3,6 @@ import './PostContainer.css';
 import Post from './Post';
 
 function PostContainer (props) {
-    console.log(props);
     return(
         <div className="post-container">
             {props.posts.map(p => {
